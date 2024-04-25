@@ -30,7 +30,7 @@ class Room:
         self.escape_code = escape_code
         self.game_objects = game_objects
 
-    # Returns whether the code of the room matches the code entered by the player
+    # Returns whether code of the room matches the code entered by the player
     def check_code(self, code):
         return self.escape_code == code
 
@@ -40,4 +40,19 @@ class Room:
         for object in self.game_objects:
             names.append(object.name)
         return names
-        
+
+
+class Game:
+
+    def __init__(self):
+        # Number of attempts the player has made on the escape code of the room
+        self.attempts = 0
+        objects = self.create_objects()
+        # Instantiating our room object
+        self.room = Room(731, objects)
+
+    # Returns a list with all the objects we're going to have in our escape room
+    def create_objects(self):
+        return [
+          GameObject(),
+        ]
