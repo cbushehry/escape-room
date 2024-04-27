@@ -30,7 +30,7 @@ class Room:
         self.escape_code = escape_code
         self.game_objects = game_objects
 
-    # Returns whether code of the room matches the code entered by the player
+    # Returns whether the escape code of the room matches the code entered by the player
     def check_code(self, code):
         return self.escape_code == code
 
@@ -80,3 +80,25 @@ class Game:
             "The battery compartment is open and empty.",
             "It smells of plastic."),
         ]
+
+    # For each turn, we want to present the prompt to the player
+    def take_turn(self):
+        prompt = self.get_room_prompt()
+        selection = input(prompt)
+        print(selection)
+
+    # Shows the option to enter the code or interact further with the objects in the room
+    def get_room_prompt(self):
+        prompt = "Enter the 3-digit lock code or choose an item to interact with:\n"
+        names = self.room.get_game_object_names()
+        index = 1
+        for name in names:
+            prompt += f"{index}. {name}\n"
+            index += 1
+        return prompt
+
+
+# Here we're creating an object of our Game class 
+# and calling on its take_turn() method
+game = Game()
+game.take_turn()
