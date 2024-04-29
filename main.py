@@ -84,8 +84,8 @@ class Game:
     # For each turn, we want to present the prompt to the player
     def take_turn(self):
         prompt = self.get_room_prompt()
-        selection = input(prompt)
-        print(selection)
+        selection = int(input(prompt))
+        self.select_object(selection - 1)
 
     # Shows the option to enter the code or interact further with the objects in the room
     def get_room_prompt(self):
@@ -96,6 +96,17 @@ class Game:
             prompt += f"{index}. {name}\n"
             index += 1
         return prompt
+
+    # Selects the object chosen by the player and prompts them for further interaction
+    def select_object(self, index):
+        selected_object = self.room.game_objects[index]
+        prompt = self.get_object_interaction_string(selected_object.name)
+        interaction = input(prompt)
+        print(interaction)
+
+    # Displays message to get type of interaction with object
+    def get_object_interaction_string(self, name):
+        return f"How do you want to interact with the {name}?\n1. Look\n2. Touch\n3. Smell\n"
 
 
 # Here we're creating an object of our Game class 
