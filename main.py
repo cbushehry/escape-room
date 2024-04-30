@@ -85,7 +85,10 @@ class Game:
     def take_turn(self):
         prompt = self.get_room_prompt()
         selection = int(input(prompt))
-        self.select_object(selection - 1)
+        # Only takes the selection prompted if it's a valid input
+        if selection >= 1 and selection <= 5:
+            self.select_object(selection - 1)
+            self.take_turn()
 
     # Shows the option to enter the code or interact further with the objects in the room
     def get_room_prompt(self):
@@ -102,12 +105,22 @@ class Game:
         selected_object = self.room.game_objects[index]
         prompt = self.get_object_interaction_string(selected_object.name)
         interaction = input(prompt)
-        print(interaction)
+        clue = self.interact_with_object(selected_object, interaction)
+        print(clue)
 
     # Displays message to get type of interaction with object
     def get_object_interaction_string(self, name):
         return f"How do you want to interact with the {name}?\n1. Look\n2. Touch\n3. Smell\n"
 
+    # Shows the interaction message to the player
+    def interact_with_object(self, object, interaction):
+        if interaction == "1":
+            return object.look()
+        elif interaction == "2":
+            return object.touch()
+        else:
+            return object.sniff()
+            
 
 # Here we're creating an object of our Game class 
 # and calling on its take_turn() method
