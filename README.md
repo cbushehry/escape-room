@@ -6,8 +6,10 @@ Escape Room game built using python
 [DIRECT LINK](https://cbushehry.github.io/escape-room/)
 
 ## 2. Features
- * Interact with game objects to solve the code and escape the room
- * This game is entirely text based, and ran in the terminal
+ * Engage with various objects in the room to uncover clues through looking, touching, and sniffing.
+ * Solve the escape puzzle by deducing a three-digit code based on interactions with room objects.
+ * he game adjusts to player choices and feedback, increasing tension with each code-guessing attempt.
+ * Detailed sensory descriptions enhance the immersive experience of the game environment.
 
 <img src="assets/images/escape-room.png" width="50%" height="auto">
 
